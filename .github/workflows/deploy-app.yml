@@ -27,5 +27,5 @@ jobs:
             yarn build
             Restart server
             pm2 kill
-            pm2 start "yarn start" --name Nuxt Start
+            pm2 start yarn --name Nuxt Start -- start
             
