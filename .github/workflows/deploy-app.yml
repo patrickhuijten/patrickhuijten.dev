@@ -23,9 +23,9 @@ jobs:
             echo HOTJAR_SV=${{secrets.HOTJAR_SV}} >> .env
             cat .env
             yarn install
-            # rm -rf .nuxt
-            # yarn build
-            # Restart server
-            # pm2 kill
-            # pm2 start "npm run start" --name Nuxt Start
+            rm -rf .nuxt
+            yarn build
+            Restart server
+            pm2 kill
+            pm2 start "yarn start" --name Nuxt Start
             
