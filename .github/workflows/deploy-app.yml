@@ -15,6 +15,13 @@ jobs:
             git checkout main
             git fetch --all
             git reset --hard origin/main
+            rm .env
+            echo STORYBLOK_TOKEN=${{secrets.STORYBLOK_TOKEN}} >> .env
+            echo GOOGLE_ANALYTICS_ID=${{secrets.GOOGLE_ANALYTICS_ID}} >> .env
+            echo HOSTNAME=${{secrets.HOSTNAME}} >> .env
+            echo HOTJAR_ID=${{secrets.HOTJAR_ID}} >> .env
+            echo HOTJAR_SV=${{secrets.HOTJAR_SV}} >> .env
+            cat .env
             yarn install
             # rm -rf .nuxt
             # yarn build
