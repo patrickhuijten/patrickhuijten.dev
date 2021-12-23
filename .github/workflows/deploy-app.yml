@@ -1,0 +1,24 @@
+name: GitHub Actions Demo
+on: [push]
+jobs:
+  Deploy-To-Server:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.PUBLIC_KEY }}
+          script: |
+            cd ${{secrets.PROJECT_DIR}}/${{github.event.repository.name }}
+            git checkout main
+            git fetch --all
+            git reset --hard origin/main
+            yarn install
+            rm -rf .nuxt
+            yarn build
+            # Restart server
+            pm2 kill
+            pm2 start "npm run start" --name Nuxt Start
+            
