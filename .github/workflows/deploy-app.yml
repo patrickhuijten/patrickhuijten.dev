@@ -9,16 +9,16 @@ jobs:
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
-          key: ${{ secrets.PUBLIC_KEY }}
+          key: ${{ secrets.PRIVATE_KEY }}
           script: |
             cd ${{secrets.PROJECT_DIR}}/${{github.event.repository.name }}
             git checkout main
             git fetch --all
             git reset --hard origin/main
             yarn install
-            rm -rf .nuxt
-            yarn build
+            # rm -rf .nuxt
+            # yarn build
             # Restart server
-            pm2 kill
-            pm2 start "npm run start" --name Nuxt Start
+            # pm2 kill
+            # pm2 start "npm run start" --name Nuxt Start
             
