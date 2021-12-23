@@ -172,6 +172,7 @@ export default {
     onResize() {
       this.camera.aspect = window.innerWidth / window.innerHeight;
       this.camera.updateProjectionMatrix();
+      this.renderer.setSize(window.innerWidth, window.innerHeight);
     },
     onPointerMove(event) {
       if (event.isPrimary === false) return;
