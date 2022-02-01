@@ -2,7 +2,7 @@
   <nuxt-link class="project shadow-sm btn btn-light border-0" :to="url">
     <img class="card-img w-100 h-100" :src="project.thumbnail" />
 
-    <h4 class="card-img-overlay">{{project.name}}</h4>
+    <h4 class="card-img-overlay">{{ project.name }}</h4>
   </nuxt-link>
 </template>
 <script>
@@ -10,13 +10,13 @@ export default {
   props: {
     project: {
       type: Object,
-      default: null
+      default: null,
     },
     url: {
       type: String,
-      default: null
-    }
-  }
+      default: null,
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -31,7 +31,7 @@ export default {
     background-color: var(--light);
     object-fit: cover;
     height: 100%;
-    transition: opacity 250ms ease;
+    transition: opacity, background-color 250ms ease;
 
     &:hover {
       opacity: 0.8;

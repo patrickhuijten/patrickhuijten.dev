@@ -25,7 +25,9 @@ footer {
     position: fixed;
     bottom: 0rem;
     padding: 1rem 0;
-    background: var(--background);
+    will-change: background-color;
+    transition: background-color var(--transition);
+    background-color: var(--background);
   }
   margin-left: auto;
   margin-right: auto;

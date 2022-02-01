@@ -1,19 +1,18 @@
 <template>
   <div class="main container-fluid">
+    <color-theme-switcher />
     <nuxt />
-
-    <!--<VueNavigation />-->
     <VueFooter />
   </div>
 </template>
 <script>
 import VueFooter from "@/components/VueFooter.vue";
-import VueNavigation from "@/components/Navigation.vue";
+import ColorThemeSwitcher from '@/components/ColorThemeSwitcher.vue';
 
 export default {
   components: {
-    VueNavigation,
-    VueFooter
+    VueFooter,
+    ColorThemeSwitcher
   }
 };
 </script>
@@ -31,6 +30,7 @@ html {
 }
 body {
   padding: 0;
+  transition: background-color var(--transition);
   background-color: var(--background);
 }
 

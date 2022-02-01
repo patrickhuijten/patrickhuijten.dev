@@ -39,8 +39,6 @@
 </template>
 <script>
 import Background from "@/components/Background.vue";
-import VueFooter from "~/components/VueFooter.vue";
-import VueNavigation from "~/components/Navigation.vue";
 
 export default {
   props: ["image", "name", "subtitle", "social", "paragraph"],
@@ -51,8 +49,6 @@ export default {
   },
   components: {
     Background,
-    VueNavigation,
-    VueFooter,
   },
 };
 </script>
@@ -93,7 +89,8 @@ export default {
   }
 }
 .title {
-  background: var(--panels);
+  transition: background-color var(--transition);
+  background-color: var(--panels);
   padding: 20px;
   grid-area: title;
 
@@ -117,7 +114,8 @@ export default {
 }
 .bio {
   padding: 20px;
-  background: var(--panels);
+  transition: background-color var(--transition);
+  background-color: var(--panels);
   grid-area: bio;
 }
 </style>

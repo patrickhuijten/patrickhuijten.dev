@@ -67,14 +67,19 @@ export default {
         //font awesome
         [
             'nuxt-fontawesome', {
-                imports: [{
-                    set: '@fortawesome/free-solid-svg-icons',
-                    icons: ['faExternalLinkAlt', 'faChevronLeft']
-                },
-                {
-                    set: '@fortawesome/free-brands-svg-icons',
-                    icons: ['faGithub', 'faLinkedin', 'faFacebook', 'faInstagram', 'faArtstation']
-                }
+                imports: [
+                    {
+                        set: '@fortawesome/free-regular-svg-icons',
+                        icons: ['faMoon']
+                    },
+                    {
+                        set: '@fortawesome/free-solid-svg-icons',
+                        icons: ['faExternalLinkAlt', 'faChevronLeft', 'faAdjust', 'faSun']
+                    },
+                    {
+                        set: '@fortawesome/free-brands-svg-icons',
+                        icons: ['faGithub', 'faLinkedin', 'faFacebook', 'faInstagram', 'faArtstation']
+                    }
                 ]
             }
         ],

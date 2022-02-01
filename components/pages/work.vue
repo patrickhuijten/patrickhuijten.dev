@@ -114,8 +114,8 @@ export default {
       width: 2px;
       height: 50px;
       background-color: var(--highlight);
-      will-change: transform;
-      transition: var(--transition) ease;
+      will-change: transform, background-color;
+      transition: var(--transition);
       transform: translateY(calc(50px * var(--offset)));
 
       @include mobile-only() {
