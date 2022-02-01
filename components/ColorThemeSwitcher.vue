@@ -19,25 +19,31 @@
 </template>
 <script>
 export default {
+  props: ["colorTheme"],
   data() {
     return {
-      colorTheme: "auto",
+      colorTheme: null,
     };
   },
   methods: {
     setColorTheme(colorTheme) {
       this.colorTheme = colorTheme;
-      window.document.documentElement.setAttribute('color-theme', colorTheme)
+      this.$cookies.set("color-theme", colorTheme);
+      window.document.documentElement.setAttribute("color-theme", colorTheme);
     },
-    getLightMode() {
+    getColorTheme() {
       if (window) {
-        const colorTheme = getComputedStyle(
-          window.document.body
-        ).getPropertyValue("--color-theme");
-        this.setLightMode(colorTheme);
+        const colorTheme = window.localStorage.getItem("color-theme");
+        if (colorTheme) {
+          this.colorTheme = colorTheme;
+        }
+        this.setColorTheme(colorTheme);
       }
     },
-  }
+  },
+  mounted() {
+    this.getColorTheme();
+  },
 };
 </script>
 <style lang="scss" scoped>

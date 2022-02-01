@@ -62,8 +62,9 @@ export default {
         // Doc: https://axios.nuxtjs.org/usage
         '@nuxtjs/axios',
         '@nuxtjs/sitemap',
-        // Doc: https://bootstrap-vue.js.org/docs/
-
+        // Doc: https://bootstrap-vue.js.org/docs/        
+        // With options
+        ['cookie-universal-nuxt', { parseJSON: false }],
         //font awesome
         [
             'nuxt-fontawesome', {
