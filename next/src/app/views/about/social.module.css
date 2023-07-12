@@ -1,4 +1,10 @@
+a.link {
+  display: block;
+  float: left;
+  font-size: 0;
+}
+
 svg.social {
-  width: 50px;
-  padding: 15px;
+  height: 50px;
+  padding: 10px;
 }
