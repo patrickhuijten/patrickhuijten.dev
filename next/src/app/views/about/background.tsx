@@ -1,8 +1,8 @@
 "use client";
 import styles from "@/app/views/about/background.module.css";
-import { Mesh, InstancedMesh, Object3D } from "three";
-import React, { useMemo, useRef, useState } from "react";
-import { Canvas, useFrame, ThreeElements } from "@react-three/fiber";
+import { InstancedMesh, Object3D } from "three";
+import React, { useMemo, useRef } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
 
 const tempObject = new Object3D();
 
@@ -11,6 +11,7 @@ interface Particle {
   y: number;
   z: number;
 }
+
 const getColor = () =>
   useMemo(() => {
     const accentColor = getComputedStyle(
@@ -19,27 +20,6 @@ const getColor = () =>
 
     return parseInt(accentColor.replace("#", "0x"), 16);
   }, []);
-
-const Particle = (props: ThreeElements["mesh"]) => {
-  const ref = useRef<Mesh>(null!);
-  const [hovered, hover] = useState(false);
-  const [clicked, click] = useState(false);
-  useFrame((state, delta) => (ref.current.rotation.x += delta));
-
-  return (
-    <mesh
-      {...props}
-      ref={ref}
-      scale={clicked ? 1.5 : 1}
-      onClick={(event) => click(!clicked)}
-      onPointerOver={(event) => hover(true)}
-      onPointerOut={(event) => hover(false)}
-    >
-      <boxGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={getColor()} />
-    </mesh>
-  );
-};
 
 const countX = 20;
 const countZ = 20;
@@ -50,6 +30,8 @@ const sizeX = countX * gap;
 const sizeZ = countZ * gap;
 const offsetX = sizeX / 2 - sizeX;
 const offsetZ = sizeZ / 2 - sizeZ;
+const scaleMultiplier = 0.02;
+const speedMultiplier = 1.5;
 
 const getParticles = () => {
   const rows: Particle[][] = [];
@@ -67,12 +49,14 @@ const getParticles = () => {
   return rows;
 };
 
-const animateMesh = (mesh: InstancedMesh, points: Particle[][], t: number) => {
+const animateSwarm = (mesh: InstancedMesh, points: Particle[][], t: number) => {
   let index = 0;
+  const time = t * speedMultiplier;
   points.forEach((row, ix) => {
     row.forEach(({ x, z }, iz) => {
-      const y = Math.sin((ix + t) * 0.3) * 5 + Math.sin((iz + t) * 0.5) * 5;
-      const scale = Math.min(0.1, y * 0.02);
+      const y =
+        Math.sin((ix + time) * 0.3) * 5 + Math.sin((iz + time) * 0.5) * 5;
+      const scale = Math.min(0.5, y * scaleMultiplier);
       tempObject.position.set(x, y, z);
       tempObject.scale.set(scale, scale, scale);
       tempObject.updateMatrix();
@@ -84,17 +68,17 @@ const animateMesh = (mesh: InstancedMesh, points: Particle[][], t: number) => {
 };
 
 const Swarm = () => {
-  const mesh = useRef<InstancedMesh>();
-  const [points] = useState(useMemo(() => getParticles(), []));
+  const mesh = useRef(null);
+  const points = useMemo(() => getParticles(), [countX, countZ, gap]);
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();
-    if (mesh.current) animateMesh(mesh.current, points, t);
+    if (mesh.current) animateSwarm(mesh.current, points, t);
   });
 
   return (
     <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
-      <sphereGeometry args={[1, 12]} />
+      <sphereGeometry args={[1, 6]} />
       <meshStandardMaterial color={getColor()} />
     </instancedMesh>
   );
@@ -106,7 +90,7 @@ export const Background = () => {
       className={styles.background}
       gl={{ antialias: true }}
       camera={{
-        position: [75, count / 4, 125],
+        position: [75, 75, 125],
         fov: 25,
         far: 1000,
       }}
