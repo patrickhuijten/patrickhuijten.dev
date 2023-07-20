@@ -1,8 +1,7 @@
 import styles from "@/app/views/about/grid.module.css";
 import Image from "next/image";
 import { Card } from "./card";
-import { ISbStoriesParams, getStoryblokApi } from "@storyblok/react/rsc";
-// import { ISbStoriesParams, getStoryblokApi} from "@storyblok/react";
+import { getStoryblokApi } from "@storyblok/react";
 import { remark } from "remark";
 import html from "remark-html";
 import { Social } from "./social";
@@ -10,10 +9,6 @@ import { Social } from "./social";
 export const Grid = async () => {
   const { data } = await fetchData();
   const { headline, biography, socials, portrait } = data.story.content;
-
-  console.log(socials);
-  console.log(headline);
-  console.log(biography);
 
   const { value: headlineAsHtml } = await remark()
     .use(html)
@@ -54,8 +49,21 @@ export const Grid = async () => {
   );
 };
 
+const getFakeData = () => {
+  return {
+    data: {
+      story: {
+        content: {
+          headline: "",
+          biography: "",
+          portrait: { filename: "" },
+          socials: [],
+        },
+      },
+    },
+  };
+};
 export async function fetchData() {
   const storyblokApi = getStoryblokApi();
-
   return storyblokApi.get(`cdn/stories/home`, { cv: Date.now() });
 }

@@ -21,15 +21,17 @@ const getColor = () =>
     return parseInt(accentColor.replace("#", "0x"), 16);
   }, []);
 
-const countX = 20;
-const countZ = 20;
+const countX = 30;
+const countZ = 30;
 const count = countX * countZ;
 const gap = 5;
 
 const sizeX = countX * gap;
 const sizeZ = countZ * gap;
+
 const offsetX = sizeX / 2 - sizeX;
 const offsetZ = sizeZ / 2 - sizeZ;
+
 const scaleMultiplier = 0.02;
 const speedMultiplier = 1.5;
 
@@ -49,6 +51,9 @@ const getParticles = () => {
   return rows;
 };
 
+const clamp = (value: number, min: number, max: number) =>
+  Math.max(min, Math.min(value, max));
+
 const animateSwarm = (mesh: InstancedMesh, points: Particle[][], t: number) => {
   let index = 0;
   const time = t * speedMultiplier;
@@ -56,7 +61,8 @@ const animateSwarm = (mesh: InstancedMesh, points: Particle[][], t: number) => {
     row.forEach(({ x, z }, iz) => {
       const y =
         Math.sin((ix + time) * 0.3) * 5 + Math.sin((iz + time) * 0.5) * 5;
-      const scale = Math.min(0.5, y * scaleMultiplier);
+      const scale = clamp(Math.abs(y * scaleMultiplier), 0.075, 0.15);
+
       tempObject.position.set(x, y, z);
       tempObject.scale.set(scale, scale, scale);
       tempObject.updateMatrix();
@@ -90,7 +96,7 @@ export const Background = () => {
       className={styles.background}
       gl={{ antialias: true }}
       camera={{
-        position: [75, 75, 125],
+        position: [150, 75, 150],
         fov: 25,
         far: 1000,
       }}

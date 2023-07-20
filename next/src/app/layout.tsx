@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 import { Source_Sans_3 } from 'next/font/google'
 import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 
-const inter = Source_Sans_3({ subsets: ['latin']})
+ const inter = Source_Sans_3({ subsets: ['latin']})
 
 storyblokInit({
   accessToken: process.env.STORYBLOK_ACCESS_TOKEN,

@@ -200,10 +200,10 @@
   dependencies:
     storyblok-js-client "^5.11.1"
 
-"@storyblok/react@^2.1.9":
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/@storyblok/react/-/react-2.1.9.tgz#4dd482d50358c9e97bab0a6eedf903f4de8f047f"
-  integrity sha512-oCSwYVh3zodLGtsBnXa4FsZqR+iAz5ZPTc7oN1oroGMVVsRcu+XGmDXHlPzcwwGK6fQFi2z+tOTE7GiQdMl/Sg==
+"@storyblok/react@^2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/react/-/react-2.2.0.tgz#ee4f3ead82d1bf6894c25c07a8bd5a995b7dd9bd"
+  integrity sha512-7R0vyrwS8Bd4dDfvSnAUvA4tJh3HmMlRk6/8a9z4hswtl8Pe2j+dCa8CtucA/5mQgg1qQHgE0vaJMAUi15MqKw==
   dependencies:
     "@storyblok/js" "^2.2.2"
 
