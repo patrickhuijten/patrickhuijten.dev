@@ -11,15 +11,16 @@ ul.container {
   --offset: 50px;
 }
 
-ul.container::before {
+li.selector {
   position: absolute;
-  left: 0;
+  left: -2rem;
   top: 0;
   height: var(--offset);
-  width: 0;
+  width: var(--offset);
   border-left: 2px solid var(--color-primary);
+  transition: transform 200ms ease-in-out;
 }
 
-ul.container > li:first-of-type::before {
-  position: absolute;
+li.selector::before {
+  content: none;
 }

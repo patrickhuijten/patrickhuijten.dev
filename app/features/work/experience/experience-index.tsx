@@ -1,6 +1,6 @@
 "use client";
 
-import styles from "features/work/experience-index.module.css";
+import styles from "features/work/experience/experience-index.module.css";
 import { ExperienceStoryblok } from "@/types/storyblok";
 
 type ExperienceIndexProps = {

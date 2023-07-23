@@ -3,7 +3,7 @@
 import { ExperienceStoryblok } from "@/types/storyblok";
 import { ExperienceItem } from "features/work/experience/experience";
 import { ExperienceIndex } from "features/work/experience/experience-index";
-import styles from "features/work/table/table.module.css";
+import styles from "features/work/experience/table.module.css";
 import { useState } from "react";
 
 type TableProps = {
@@ -16,6 +16,10 @@ export const Table = ({ experiences }: TableProps) => {
   return (
     <div className={styles.table}>
       <ul className={styles.container}>
+        <li
+          className={styles.selector}
+          style={{ transform: `translateY(${50 * selectedIndex}px)` }}
+        />
         {experiences.map((experience, index) => (
           <ExperienceIndex
             selected={selectedIndex === index}

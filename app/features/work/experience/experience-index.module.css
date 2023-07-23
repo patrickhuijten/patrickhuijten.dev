@@ -6,10 +6,16 @@ li.index {
   line-height: 50px;
   will-change: color;
   transition: color 250ms ease;
+  margin: 0;
+}
+
+li.index::before {
+  content: none;
 }
 
 li.index[aria-selected="true"] {
   color: var(--color-primary);
+  font-weight: 500;
 }
 
 li.index[aria-selected="false"]:hover {

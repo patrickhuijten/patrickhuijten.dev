@@ -1,0 +1,6 @@
+header.header {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: max-content max-content;
+  justify-content: space-between;
+}

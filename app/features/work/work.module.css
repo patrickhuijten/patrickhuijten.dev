@@ -2,6 +2,6 @@ section.work {
   display: flex;
   flex-direction: column;
 
-  place-content: start;
+  place-content: flex-start;
   padding-top: 25%;
 }

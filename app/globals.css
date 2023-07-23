@@ -41,6 +41,32 @@ p:not(:last-of-type) {
   margin-bottom: var(--card-padding);
 }
 
+hr {
+  border-color: var(--grid-bg);
+  opacity: 0.3;
+  margin: 1rem 0;
+}
+
+h1,
+h2 {
+  font-weight: 500;
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  position: relative;
+}
+
+li::before {
+  position: absolute;
+  left: -1.5rem;
+  content: "▹";
+  color: var(--color-primary);
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;

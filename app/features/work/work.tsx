@@ -1,4 +1,4 @@
-import styles from "@/app/views/work/work.module.css";
+import styles from "features/work/work.module.css";
 import { TableContainer } from "features/work/experience/table-container";
 
 export const Work = () => {
