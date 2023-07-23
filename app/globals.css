@@ -67,6 +67,14 @@ li::before {
   color: var(--color-primary);
 }
 
+p img {
+  max-width: 25%;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  float: left;
+  margin-right: 1rem;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
