@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import { ExperienceItem } from "./experience";
-import styles from "@/app/views/work/table/table.module.css";
-import { ExperienceIndex } from "./experience-index";
 import { ExperienceStoryblok } from "@/types/storyblok";
+import { ExperienceItem } from "features/work/experience/experience";
+import { ExperienceIndex } from "features/work/experience/experience-index";
+import styles from "features/work/table/table.module.css";
+import { useState } from "react";
 
 type TableProps = {
   experiences: ExperienceStoryblok[];

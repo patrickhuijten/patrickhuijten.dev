@@ -1,4 +1,4 @@
-import { Table } from "./table";
+import { Table } from "features/work/experience/table";
 import { getStory } from "@/lib/storyblok-api";
 
 export const TableContainer = async () => {

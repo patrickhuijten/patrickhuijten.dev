@@ -1,6 +1,6 @@
 import styles from "./page.module.css";
-import { About } from "./views/about/about";
-import { Work } from "./views/work/work";
+import { About } from "features/about/about";
+import { Work } from "features/work/work";
 
 export default function Home() {
   return (

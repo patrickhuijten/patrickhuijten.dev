@@ -1,4 +1,6 @@
-import styles from "@/app/views/work/experience-index.module.css";
+"use client";
+
+import styles from "features/work/experience-index.module.css";
 import { ExperienceStoryblok } from "@/types/storyblok";
 
 type ExperienceIndexProps = {

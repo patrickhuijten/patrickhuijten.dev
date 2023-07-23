@@ -1,8 +1,8 @@
-import styles from "@/app/views/about/grid/grid.module.css";
-import Image from "next/image";
-import { Card } from "../card/card";
-import { Social } from "../social/social";
 import { getStory } from "@/lib/storyblok-api";
+import { Card } from "features/about/card/card";
+import styles from "features/about/grid/grid.module.css";
+import { Social } from "features/about/social/social";
+import Image from "next/image";
 
 export const Grid = async () => {
   const { data } = await fetchData();
