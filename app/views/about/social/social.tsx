@@ -2,14 +2,16 @@ import {
   faLinkedin,
   faArtstation,
   faGithub,
+  faGit,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "@/app/views/about/social.module.css";
-import { IconProp } from "@fortawesome/fontawesome-svg-core";
+import styles from "@/app/views/about/social/social.module.css";
+import { type IconProp } from "@fortawesome/fontawesome-svg-core";
+import { SocialStoryblok } from "@/types/storyblok";
 
 type SocialProps = {
   src: string;
-  iconType: "linkedin" | "artstation" | "github";
+  iconType: SocialStoryblok["platform"]
 };
 export const Social = ({ src, iconType }: SocialProps) => {
   const icon = getIcon(iconType);
@@ -20,7 +22,7 @@ export const Social = ({ src, iconType }: SocialProps) => {
   );
 };
 
-const getIcon = (iconType: SocialProps["iconType"]): IconProp => {
+const getIcon = (iconType: SocialProps["iconType"]) => {
   switch (iconType) {
     case "linkedin":
       return faLinkedin as IconProp;
@@ -28,5 +30,7 @@ const getIcon = (iconType: SocialProps["iconType"]): IconProp => {
       return faArtstation as IconProp;
     case "github":
       return faGithub as IconProp;
+      default:
+        return faGithub
   }
 };

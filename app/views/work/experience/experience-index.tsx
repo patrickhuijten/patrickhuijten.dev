@@ -1,7 +1,8 @@
-import { Experience } from "./table";
 import styles from "@/app/views/work/experience-index.module.css";
+import { ExperienceStoryblok } from "@/types/storyblok";
+
 type ExperienceIndexProps = {
-  experience: Experience;
+  experience: ExperienceStoryblok;
   onClick: () => void;
   selected: boolean;
 };

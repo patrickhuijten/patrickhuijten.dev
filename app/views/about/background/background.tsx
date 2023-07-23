@@ -1,5 +1,6 @@
 "use client";
-import styles from "@/app/views/about/background.module.css";
+
+import styles from "@/app/views/about/background/background.module.css";
 import { InstancedMesh, Object3D } from "three";
 import React, { useMemo, useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";

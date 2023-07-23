@@ -6,9 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "storyblok:pull-components": "storyblok pull-components --space 159055",
+    "storyblok:typegen": "storyblok-generate-ts source=./components.159055.json target=./types/storyblok"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@react-three/fiber": "^8.13.5",
@@ -19,7 +22,7 @@
     "@types/three": "^0.153.0",
     "classnames": "^2.3.2",
     "eslint": "8.44.0",
-    "eslint-config-next": "13.4.9",
+    "eslint-config-next": "^13.4.10",
     "next": "13.4.9",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -27,5 +30,9 @@
     "remark-html": "^15.0.2",
     "three": "^0.154.0",
     "typescript": "5.1.6"
+  },
+  "devDependencies": {
+    "storyblok": "^3.25.0",
+    "storyblok-generate-ts": "^1.15.0"
   }
 }
