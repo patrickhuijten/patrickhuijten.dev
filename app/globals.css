@@ -61,6 +61,10 @@ hr {
 
 h1 {
   font-size: 2rem;
+
+  @media (max-aspect-ratio: 1/1) {
+    font-size: 1.5rem;
+  }
 }
 h1,
 h2 {

@@ -61,7 +61,7 @@ const Title = ({
   company_name,
 }: Pick<ExperienceStoryblok, "title" | "company" | "company_name">) => {
   return (
-    <span>
+    <span className={styles.title}>
       <h2>
         {title} @{" "}
         <a href={company?.url} target="_blank">
@@ -73,7 +73,7 @@ const Title = ({
 };
 
 const Location = ({ location }: Pick<ExperienceStoryblok, "location">) => {
-  return <span>{location}</span>;
+  return <span className={styles.location}>{location}</span>;
 };
 
 const TimeRange = ({
