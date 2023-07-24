@@ -13,7 +13,7 @@ li.index::before {
   content: none;
 }
 
-li.index[aria-selected="true"] {
+li.index[data-selected="true"] {
   color: var(--color-primary);
   font-weight: 500;
 }

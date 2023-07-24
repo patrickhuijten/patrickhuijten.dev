@@ -15,7 +15,7 @@ export const ExperienceIndex = ({
   selected,
 }: ExperienceIndexProps) => {
   return (
-    <li className={styles.index} aria-selected={selected} onClick={onClick}>
+    <li className={styles.index} data-selected={selected} onClick={onClick}>
       {experience.company_name}
     </li>
   );
