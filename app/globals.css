@@ -1,16 +1,23 @@
 :root {
   --max-width: 1120px;
   --border-radius: 12px;
-  --font-mono: ui-monospace, Menlo, Monaco, "Cascadia Mono", "Segoe UI Mono",
-    "Roboto Mono", "Oxygen Mono", "Ubuntu Monospace", "Source Code Pro",
-    "Fira Mono", "Droid Sans Mono", "Courier New", monospace;
-  --grid-bg: #fbfbfb;
+  --grid-bg: rgba(251, 251, 251, 0.8);
   --card-padding: 20px;
   --page-bg: #f7f7f7;
   --gap: 20px;
   --text-color: #333;
-
+  --text-secondary: #222;
+  --color-border: #ddd;
   --color-primary: #369687;
+
+  @media (prefers-color-scheme: dark) {
+    --page-bg: #292929;
+    --grid-bg: rgba(31, 31, 31, 0.8);
+    --text-color: #f8ffef;
+    --text-secondary: rgb(146, 146, 146);
+    --color-primary: #1f9e8a;
+    --color-border: #444;
+  }
 }
 
 * {
@@ -32,6 +39,11 @@ a {
   text-decoration: none;
 }
 
+::selection {
+  background-color: var(--color-primary);
+  color: var(--page-bg);
+}
+
 section.page {
   width: 100%;
   min-width: 100vh;
@@ -42,11 +54,14 @@ p:not(:last-of-type) {
 }
 
 hr {
-  border-color: var(--grid-bg);
+  border-color: var(--color-border);
   opacity: 0.3;
   margin: 1rem 0;
 }
 
+h1 {
+  font-size: 2rem;
+}
 h1,
 h2 {
   font-weight: 500;
@@ -54,6 +69,8 @@ h2 {
 
 ul {
   list-style: none;
+  margin-left: 2rem;
+  margin-bottom: 1rem;
 }
 
 li {
@@ -67,12 +84,9 @@ li::before {
   color: var(--color-primary);
 }
 
-p img {
-  max-width: 25%;
+img {
   border-radius: var(--border-radius);
   overflow: hidden;
-  float: left;
-  margin-right: 1rem;
 }
 
 @media (prefers-color-scheme: dark) {

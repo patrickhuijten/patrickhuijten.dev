@@ -17,6 +17,7 @@ export const Table = ({ experiences }: TableProps) => {
     <div className={styles.table}>
       <ul className={styles.container}>
         <li
+          key="selector"
           className={styles.selector}
           style={{ transform: `translateY(${50 * selectedIndex}px)` }}
         />

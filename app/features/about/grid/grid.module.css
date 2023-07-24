@@ -1,6 +1,5 @@
 div.grid {
   width: 100%;
-  height: 50%;
   display: grid;
   grid-template-areas: "picture headline" "picture bio";
   grid-template-rows: min-content max-content;
@@ -8,14 +7,14 @@ div.grid {
   grid-gap: var(--gap);
   z-index: 1;
 
-  @media (max-width: 768px) {
-    grid-template-areas: "picture headline" "bio bio";
-    grid-template-rows: min-content max-content max-content;
-    grid-template-columns: 1fr 3fr;
-  }
-
   @media (max-width: 1024px) {
     grid-template-columns: 1fr 2fr;
+  }
+
+  @media (max-width: 768px) {
+    grid-template-areas: "headline picture" "bio bio";
+    grid-template-rows: min-content max-content;
+    grid-template-columns: 2fr 1fr;
   }
 }
 
@@ -31,6 +30,10 @@ div.picture img {
 
 div.headline {
   grid-area: headline;
+}
+
+div.headline p {
+  color: var(--text-secondary);
 }
 
 div.bio {

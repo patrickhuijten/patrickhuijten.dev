@@ -1,14 +1,31 @@
 div.table {
   width: 100%;
+  height: 75vh;
   display: grid;
   grid-template-columns: 1fr 3fr;
-  grid-template-rows: max-content;
+  grid-template-rows: 100%;
+  place-content: center;
   gap: var(--gap);
+
+  @media (max-aspect-ratio: 1/1) {
+    height: unset;
+    grid-template-columns: 1fr;
+    grid-template-rows: max-content max-content;
+    grid-auto-flow: column;
+  }
 }
 
 ul.container {
   position: relative;
   --offset: 50px;
+
+  @media (max-aspect-ratio: 1/1) {
+    margin: 0;
+    display: grid;
+    grid-auto-flow: column;
+    gap: var(--gap);
+    overflow: auto hidden;
+  }
 }
 
 li.selector {
@@ -16,7 +33,6 @@ li.selector {
   left: -2rem;
   top: 0;
   height: var(--offset);
-  width: var(--offset);
   border-left: 2px solid var(--color-primary);
   transition: transform 200ms ease-in-out;
 }

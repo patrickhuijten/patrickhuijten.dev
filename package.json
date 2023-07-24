@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "storyblok:pull-components": "storyblok pull-components --space 159055",
-    "storyblok:typegen": "storyblok-generate-ts source=./components.159055.json target=./types/storyblok"
+    "storyblok:typegen": "storyblok-generate-ts source=./components.159055.json target=./types/storyblok",
+    "ssh-proxy": " local-ssl-proxy --source 3010 --target 3000 --cert localhost.pem --key localhost-key.pem"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -33,6 +34,7 @@
     "typescript": "5.1.6"
   },
   "devDependencies": {
+    "local-ssl-proxy": "^2.0.5",
     "storyblok": "^3.25.0",
     "storyblok-generate-ts": "^1.15.0"
   }
