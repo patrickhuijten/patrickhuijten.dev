@@ -17,9 +17,14 @@ type StoryblokPageResult = ISbStory & {
 export const getStory = async (slug: string): Promise<StoryblokPageResult> => {
   const storyblokApi: StoryblokClient = getStoryblokApi();
 
-  const story = (await storyblokApi.get(slug, {
-    cv: Date.now(),
-  })) as StoryblokPageResult;
+  const options =
+    process.env.NODE_ENV === "production"
+      ? undefined
+      : {
+          cv: Date.now(),
+        };
+
+  const story = (await storyblokApi.get(slug, options)) as StoryblokPageResult;
 
   story.data.story.content.biography = processToHtml(
     story.data.story.content.biography ?? ""
