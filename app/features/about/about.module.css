@@ -1,0 +1,13 @@
+section.about {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  padding: var(--gap) 0;
+
+  place-content: center;
+  place-items: center;
+
+  @media (max-aspect-ratio: 1/1) {
+    min-height: unset;
+  }
+}

@@ -1,0 +1,13 @@
+section.work {
+  min-height: 100vh;
+  padding: var(--gap) 0;
+  display: flex;
+  flex-direction: column;
+
+  place-content: center;
+  gap: var(--gap);
+
+  @media (max-aspect-ratio: 1/1) {
+    min-height: unset;
+  }
+}

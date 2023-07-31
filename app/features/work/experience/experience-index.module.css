@@ -1,0 +1,24 @@
+li.index {
+  height: 50px;
+  cursor: pointer;
+  list-style: none;
+  margin-bottom: var(--gap);
+  line-height: 50px;
+  will-change: color;
+  transition: color 250ms ease;
+  margin: 0;
+}
+
+li.index::before {
+  content: none;
+}
+
+li.index[data-selected="true"] {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+li.index[aria-selected="false"]:hover {
+  color: var(--color-primary);
+  opacity: 0.75;
+}
