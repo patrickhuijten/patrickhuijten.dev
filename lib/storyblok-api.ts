@@ -16,13 +16,10 @@ type StoryblokPageResult = ISbStory & {
 
 export const getStory = async (slug: string): Promise<StoryblokPageResult> => {
   const storyblokApi: StoryblokClient = getStoryblokApi();
-
-  const options =
-    process.env.NODE_ENV === "production"
-      ? undefined
-      : {
-          cv: Date.now(),
-        };
+  const date = new Date().getUTCMinutes();
+  const options = {
+    cv: date,
+  };
 
   const story = (await storyblokApi.get(slug, options)) as StoryblokPageResult;
 
