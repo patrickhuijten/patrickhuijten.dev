@@ -1,12 +1,14 @@
 import { getStory } from "@/lib/storyblok-api";
+import { LandingPageStoryblok } from "@/types/storyblok";
+import { ISbResult, ISbStory, ISbStoryData } from "@storyblok/react";
 import { Card } from "features/about/card/card";
 import styles from "features/about/grid/grid.module.css";
 import { Social } from "features/about/social/social";
 import Image from "next/image";
 
 export const Grid = async () => {
-  const { data } = await fetchData();
-  const { headline, biography, socials, portrait } = data.story.content;
+  const { content } = await fetchLandingPage();
+  const { headline, biography, socials, portrait } = content;
 
   return (
     <div className={styles.grid}>
@@ -41,6 +43,8 @@ export const Grid = async () => {
   );
 };
 
-export async function fetchData() {
-  return getStory("cdn/stories/home");
+export async function fetchLandingPage() {
+  const story = await getStory("cdn/stories/home");
+
+  return story.data as ISbStoryData<LandingPageStoryblok>;
 }

@@ -1,50 +1,62 @@
-import { getStoryblokApi } from "@storyblok/react/rsc";
+import {
+  ISbStoriesParams,
+  ISbStoryData,
+  ISbStoryParams,
+  getStoryblokApi,
+  storyblokEditable,
+} from "@storyblok/react/rsc";
 import { StoryblokClient, ISbStory } from "@storyblok/react";
-import { PageStoryblok } from "@/types/storyblok.js";
-// @ts-ignore
 import { remark } from "remark";
-// @ts-ignore
 import remarkHtml from "remark-html";
 import { format } from "date-fns";
-type StoryblokPageResult = ISbStory & {
-  data: ISbStory["data"] & {
-    story: ISbStory["data"]["story"] & {
-      content: Required<PageStoryblok>;
-    };
+
+export const getStories = async (options: ISbStoriesParams) => {
+  const storyblokApi = getStoryblokApi();
+  const date = new Date().getUTCSeconds();
+
+  const baseOptions = {
+    cv: date,
   };
+
+  const { data } = await storyblokApi.getStories({
+    ...options,
+    ...baseOptions,
+  });
+
+  return data.stories;
 };
 
-export const getStory = async (slug: string): Promise<StoryblokPageResult> => {
-  const storyblokApi: StoryblokClient = getStoryblokApi();
+export const getStory = async (slug: string) => {
+  const storyblokApi = getStoryblokApi();
   const date = new Date().getUTCMinutes();
   const options = {
     cv: date,
   };
 
-  const story = (await storyblokApi.get(slug, options)) as StoryblokPageResult;
-
-  story.data.story.content.biography = processToHtml(
-    story.data.story.content.biography ?? ""
-  );
-
-  story.data.story.content.headline = processToHtml(
-    story.data.story.content.headline ?? ""
-  );
-
-  story.data.story.content.experiences =
-    story.data.story.content.experiences.map((experience) => ({
-      ...experience,
-      description: processToHtml(experience.description ?? ""),
-      start_date: processDateToString(experience.start_date),
-      end_date: processDateToString(experience.end_date),
-    }));
-
+  const story = await storyblokApi.get(slug, options);
   return story;
+
+  // story.data.story.content.biography = processToHtml(
+  //   story.data.story.content.biography ?? ""
+  // );
+
+  // story.data.story.content.headline = processToHtml(
+  //   story.data.story.content.headline ?? ""
+  // );
+
+  // story.data.story.content.experiences =
+  //   story.data.story.content.experiences.map((experience) => ({
+  //     ...experience,
+  //     description: processToHtml(experience.description ?? ""),
+  //     start_date: processDateToString(experience.start_date),
+  //     end_date: processDateToString(experience.end_date),
+  //   }));
+
+  // return story;
 };
 
 const processDateToString = (value?: string) =>
   value ? format(new Date(value), "MMM yyyy") : "Unknown date";
 
-const processToHtml = (value: string) =>
-  // @ts-ignore
+export const mapToHtml = (value: string) =>
   remark().use(remarkHtml).processSync(value).toString();
