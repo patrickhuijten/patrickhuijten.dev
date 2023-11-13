@@ -1,50 +1,55 @@
 import { getStories, getStory, mapToHtml } from "@/lib/storyblok-api";
-import { BlogPostStoryblok } from "@/types/storyblok";
+import { BlogPostStoryblok, PageStoryblok } from "@/types/storyblok";
 import { ISbStoryData } from "@storyblok/react";
 import { PageContainer } from "features/page-container";
 import Link from "next/link";
+import { PropsWithChildren } from "react";
+import { ArticleLink } from "./article-link";
 
 export async function fetchIntro() {
-  return getStory("cdn/stories/articles");
+  const data = await getStory("articles", { version: "draft" });
+
+  return data as ISbStoryData<PageStoryblok>;
 }
 
 export async function fetchArticles() {
-  return (await getStories({
+  const data = await getStories({
     starts_with: "articles",
     version: "draft",
     is_startpage: false,
-  })) as ISbStoryData<BlogPostStoryblok>[];
+  });
+  return data as ISbStoryData<BlogPostStoryblok>[];
 }
 
 export const Articles = async () => {
-  const { data: intro } = await fetchIntro();
-  console.log(intro);
+  const intro = await fetchIntro();
+  console.log({ intro });
   const articles = await fetchArticles();
   return (
     <PageContainer>
-      <h1>{intro.story.content.title}</h1>
-      <p>{intro.story.content.text}</p>
+      <h1>{intro.content.title}</h1>
+      <p>{intro.content.text}</p>
       <hr />
-      {articles.map((story) => (
-        <ArticleLink article={story} />
-      ))}
+      <ArticleLinkContainer>
+        {articles.map((story) => (
+          <ArticleLink article={story} key={story.uuid} />
+        ))}
+      </ArticleLinkContainer>
     </PageContainer>
   );
 };
 
-const ArticleLink = ({
-  article,
-}: {
-  article: ISbStoryData<BlogPostStoryblok>;
-}) => {
+const ArticleLinkContainer = ({ children }: PropsWithChildren) => {
   return (
-    <Link href={article.full_slug}>
-      <h2>{article.content.title}</h2>
-      <span
-        dangerouslySetInnerHTML={{
-          __html: mapToHtml(article.content.teaser ?? ""),
-        }}
-      />
-    </Link>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        gap: "2rem",
+        padding: "2rem 0",
+      }}
+    >
+      {children}
+    </div>
   );
 };

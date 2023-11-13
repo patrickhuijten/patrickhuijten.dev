@@ -26,15 +26,21 @@ export const getStories = async (options: ISbStoriesParams) => {
   return data.stories;
 };
 
-export const getStory = async (slug: string) => {
+export const getStory = async (slug: string, options?: ISbStoriesParams) => {
   const storyblokApi = getStoryblokApi();
-  const date = new Date().getUTCMinutes();
-  const options = {
+  const date = new Date().getUTCSeconds();
+  const baseOptions = {
     cv: date,
   };
-
-  const story = await storyblokApi.get(slug, options);
-  return story;
+  try {
+    const story = await storyblokApi.getStory(slug, {
+      ...options,
+      ...baseOptions,
+    });
+    return story.data.story;
+  } catch (err) {
+    console.warn("error for: ", slug);
+  }
 
   // story.data.story.content.biography = processToHtml(
   //   story.data.story.content.biography ?? ""

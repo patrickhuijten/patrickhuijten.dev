@@ -1,3 +1,4 @@
+import { MarkdownSpan } from "@/app/markdown-span";
 import { ExperienceStoryblok } from "@/types/storyblok";
 import styles from "features/work/experience/experience.module.css";
 import Image from "next/image";
@@ -30,10 +31,7 @@ export const ExperienceItem = ({ experience, active }: ExperienceProps) => {
           current={current}
         />
       </header>
-      <div
-        className={styles.description}
-        dangerouslySetInnerHTML={{ __html: description ?? "" }}
-      />
+      <MarkdownSpan className={styles.description} markdown={description} />
       {media && (
         <div className={styles.media}>
           {media.map((item, index) => (

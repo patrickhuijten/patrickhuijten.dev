@@ -6,4 +6,5 @@ main.main {
 
 main.main > section {
   width: 100%;
+  scroll-snap-align: start;
 }

@@ -1,9 +1,11 @@
 import { Table } from "features/work/experience/table";
 import { getStory } from "@/lib/storyblok-api";
+import { ISbStoryData } from "@storyblok/react";
+import { LandingPageStoryblok } from "@/types/storyblok";
 
 export const TableContainer = async () => {
-  const { data } = await fetchData();
-  const { experiences, experiences_headline } = data.story.content;
+  const about = await fetchData();
+  const { experiences, experiences_headline } = about.content;
   return (
     <>
       <h1> {experiences_headline}</h1>
@@ -13,5 +15,7 @@ export const TableContainer = async () => {
 };
 
 export async function fetchData() {
-  return getStory("cdn/stories/home");
+  const data = await getStory("home");
+  console.log(data);
+  return data as ISbStoryData<LandingPageStoryblok>;
 }

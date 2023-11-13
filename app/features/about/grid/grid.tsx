@@ -1,3 +1,4 @@
+import { MarkdownSpan } from "@/app/markdown-span";
 import { getStory } from "@/lib/storyblok-api";
 import { LandingPageStoryblok } from "@/types/storyblok";
 import { ISbResult, ISbStory, ISbStoryData } from "@storyblok/react";
@@ -26,7 +27,7 @@ export const Grid = async () => {
       </div>
       <div className={styles.headline}>
         <Card>
-          <div dangerouslySetInnerHTML={{ __html: headline ?? "" }} />
+          <MarkdownSpan markdown={headline} />
           <div>
             {socials?.map((social) => (
               <Social iconType={social.platform} src={social.url?.url} />
@@ -36,7 +37,7 @@ export const Grid = async () => {
       </div>
       <div className={styles.bio}>
         <Card>
-          <div dangerouslySetInnerHTML={{ __html: biography ?? "" }} />
+          <MarkdownSpan markdown={biography} />
         </Card>
       </div>
     </div>
@@ -44,7 +45,7 @@ export const Grid = async () => {
 };
 
 export async function fetchLandingPage() {
-  const story = await getStory("cdn/stories/home");
+  const data = await getStory("home");
 
-  return story.data as ISbStoryData<LandingPageStoryblok>;
+  return data as ISbStoryData<LandingPageStoryblok>;
 }
