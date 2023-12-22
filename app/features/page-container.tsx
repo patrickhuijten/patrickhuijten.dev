@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from "react";
+import { ReactNode } from "react";
 import styles from "features/page-container.module.css";
 
 export const PageContainer = ({ children }: { children: ReactNode }) => {

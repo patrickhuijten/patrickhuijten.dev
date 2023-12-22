@@ -39,6 +39,11 @@ a {
   text-decoration: none;
 }
 
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gap);
+}
 ::selection {
   background-color: var(--color-primary);
   color: var(--page-bg);

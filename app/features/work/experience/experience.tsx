@@ -81,7 +81,25 @@ const TimeRange = ({
 }: Pick<ExperienceStoryblok, "start_date" | "end_date" | "current">) => {
   return (
     <span className={styles["time-range"]}>
-      📆 {start_date} - {current ? "Current" : end_date}
+      {start_date && (
+        <span>
+          {new Date(start_date).toLocaleDateString(["en"], {
+            month: "short",
+            year: "numeric",
+          })}
+        </span>
+      )}
+      {" - "}
+      {end_date && (
+        <span>
+          {current
+            ? "Current"
+            : new Date(end_date).toLocaleDateString(["en"], {
+                month: "short",
+                year: "numeric",
+              })}
+        </span>
+      )}
     </span>
   );
 };

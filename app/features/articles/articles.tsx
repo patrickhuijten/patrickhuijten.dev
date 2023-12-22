@@ -2,7 +2,6 @@ import { getStories, getStory, mapToHtml } from "@/lib/storyblok-api";
 import { BlogPostStoryblok, PageStoryblok } from "@/types/storyblok";
 import { ISbStoryData } from "@storyblok/react";
 import { PageContainer } from "features/page-container";
-import Link from "next/link";
 import { PropsWithChildren } from "react";
 import { ArticleLink } from "./article-link";
 
@@ -27,7 +26,7 @@ export const Articles = async () => {
   const articles = await fetchArticles();
   return (
     <PageContainer>
-      <h1>{intro.content.title}</h1>
+      <h1 id="articles">{intro.content.title}</h1>
       <p>{intro.content.text}</p>
       <hr />
       <ArticleLinkContainer>

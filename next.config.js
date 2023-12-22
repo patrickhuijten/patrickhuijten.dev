@@ -4,6 +4,11 @@ const nextConfig = {
   images: {
     domains: ["a.storyblok.com"],
   },
+  experimental: {
+    serverComponentsExternalPackages: [
+      "markdown-toc",
+    ],
+  },
 };
 
 module.exports = nextConfig;

@@ -1,11 +1,4 @@
-import {
-  ISbStoriesParams,
-  ISbStoryData,
-  ISbStoryParams,
-  getStoryblokApi,
-  storyblokEditable,
-} from "@storyblok/react/rsc";
-import { StoryblokClient, ISbStory } from "@storyblok/react";
+import { ISbStoriesParams, getStoryblokApi } from "@storyblok/react/rsc";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 import { format } from "date-fns";
@@ -32,6 +25,7 @@ export const getStory = async (slug: string, options?: ISbStoriesParams) => {
   const baseOptions = {
     cv: date,
   };
+
   try {
     const story = await storyblokApi.getStory(slug, {
       ...options,
@@ -41,24 +35,6 @@ export const getStory = async (slug: string, options?: ISbStoriesParams) => {
   } catch (err) {
     console.warn("error for: ", slug);
   }
-
-  // story.data.story.content.biography = processToHtml(
-  //   story.data.story.content.biography ?? ""
-  // );
-
-  // story.data.story.content.headline = processToHtml(
-  //   story.data.story.content.headline ?? ""
-  // );
-
-  // story.data.story.content.experiences =
-  //   story.data.story.content.experiences.map((experience) => ({
-  //     ...experience,
-  //     description: processToHtml(experience.description ?? ""),
-  //     start_date: processDateToString(experience.start_date),
-  //     end_date: processDateToString(experience.end_date),
-  //   }));
-
-  // return story;
 };
 
 const processDateToString = (value?: string) =>
