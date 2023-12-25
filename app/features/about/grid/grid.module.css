@@ -18,17 +18,17 @@ div.grid {
   }
 }
 
-div.picture {
+div.grid > div.picture {
   grid-area: picture;
 }
 
-div.picture img {
+div.grid > div.picture img {
   @media (max-width: 768px) {
     transform: scale(1.25);
   }
 }
 
-div.headline {
+div.grid > div.headline {
   grid-area: headline;
 }
 
@@ -36,6 +36,6 @@ div.headline p {
   color: var(--text-secondary);
 }
 
-div.bio {
+div.grid > div.bio {
   grid-area: bio;
 }

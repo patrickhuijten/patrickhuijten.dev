@@ -1,0 +1,9 @@
+header.header { 
+    --size: calc(100px + var(--card-padding));
+    display: grid;
+    grid-template-columns: var(--size) 1fr;
+    grid-template-rows: var(--size);
+    padding: 1rem 0;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}

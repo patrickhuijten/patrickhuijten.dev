@@ -1,12 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  trailingSlash: true,
+  trailingSlash: false,
   images: {
-    domains: ["a.storyblok.com"],
+    remotePatterns: [{
+      protocol: "https",
+      hostname: "a.storyblok.com"
+    }],
   },
   experimental: {
     serverComponentsExternalPackages: [
       "markdown-toc",
+      "react-markdown"
     ],
   },
 };

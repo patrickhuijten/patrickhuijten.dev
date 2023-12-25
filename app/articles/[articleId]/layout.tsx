@@ -1,3 +1,4 @@
+import { Header } from "@/app/features/articles/header";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,5 +11,10 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  return <div style={{ paddingTop: "100px" }}>{children}</div>;
+  return (
+    <>
+      <Header />
+      {children}
+    </>
+  );
 }
