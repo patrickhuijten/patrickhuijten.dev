@@ -1,5 +1,5 @@
 header.header { 
-    --size: calc(100px + var(--card-padding));
+    --size: calc(var(--card-padding) * 3);
     display: grid;
     grid-template-columns: var(--size) 1fr;
     grid-template-rows: var(--size);

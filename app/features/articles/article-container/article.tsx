@@ -5,8 +5,9 @@ import { BlogPostStoryblok } from "@/types/storyblok";
 import slugify from "slugify";
 import { Element } from "hast";
 import React, { ClassAttributes, HTMLAttributes, createElement } from "react";
+import { Card } from "../../about/card/card";
 
-const getHeaderText = (node?: Element) => {
+const getElementText = (node?: Element) => {
   const textElement = node?.children.at(0);
   return textElement?.type === "text" ? textElement.value : "";
 };
@@ -16,7 +17,7 @@ const mapMarkdownHeader = (
     HTMLAttributes<HTMLHeadingElement> &
     ExtraProps
 ) => {
-  const text = getHeaderText(props.node);
+  const text = getElementText(props.node);
   console.log(props.node?.tagName);
   return createElement(
     props.node?.tagName ?? "span",
