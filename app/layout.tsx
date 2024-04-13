@@ -6,7 +6,7 @@ import { storyblokInit, apiPlugin } from "@storyblok/react/rsc";
 const inter = Source_Sans_3({ subsets: ["latin"] });
 
 storyblokInit({
-  accessToken: process.env.STORYBLOK_ACCESS_TOKEN,
+  accessToken: process.env.STORYBLOK_TOKEN,
   use: [apiPlugin],
 });
 
