@@ -76,7 +76,7 @@ const animateSwarm = (mesh: InstancedMesh, points: Particle[][], t: number) => {
 
 const Swarm = () => {
   const mesh = useRef(null);
-  const points = useMemo(() => getParticles(), [countX, countZ, gap]);
+  const points = useMemo(() => getParticles(), []);
 
   useFrame((state) => {
     const t = state.clock.getElapsedTime();

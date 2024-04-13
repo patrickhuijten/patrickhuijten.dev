@@ -21,10 +21,9 @@ jobs:
             rm .env
             echo STORYBLOK_TOKEN=${{secrets.STORYBLOK_TOKEN}} >> .env
             echo HOSTNAME=${{secrets.HOSTNAME}} >> .env
-            export STORYBLOK_ACCESS_TOKEN=${{secrets.STORYBLOK_ACCESS_TOKEN}}
             yarn
             rm -rf .next
-            npx storyblok login --region eu --token $STORYBLOK_ACCESS_TOKEN
+            yarn storyblok login --region eu --token ${{secrets.STORYBLOK_ACCESS_TOKEN}}
             yarn storyblok:pull-components
             yarn storyblok:typegen
             yarn build
