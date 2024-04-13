@@ -21,8 +21,7 @@ jobs:
             rm .env
             echo STORYBLOK_TOKEN=${{secrets.STORYBLOK_TOKEN}} >> .env
             echo HOSTNAME=${{secrets.HOSTNAME}} >> .env
-            cat .env
-            yarn install
+            yarn
             rm -rf .next
             yarn build
             pm2 kill
