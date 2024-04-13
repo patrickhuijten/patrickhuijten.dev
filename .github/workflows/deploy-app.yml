@@ -25,7 +25,7 @@ jobs:
             yarn
             rm -rf .next
             npx storyblok login --region eu --token $STORYBLOK_ACCESS_TOKEN
-            yarn storyblok:pull-component
+            yarn storyblok:pull-components
             yarn storyblok:typegen
             yarn build
             pm2 kill
