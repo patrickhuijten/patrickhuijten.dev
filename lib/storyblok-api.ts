@@ -1,15 +1,16 @@
-import { getStoryblokApi } from "@storyblok/react/rsc";
-import { StoryblokClient, ISbStory } from "@storyblok/react";
-import { PageStoryblok } from "@/types/storyblok.js";
+import { getStoryblokApi, StoryblokClient, ISbStory } from "@storyblok/react/rsc";
+import { LandingPageStoryblok } from "@/types/storyblok";
+
 // @ts-ignore
 import { remark } from "remark";
 // @ts-ignore
 import remarkHtml from "remark-html";
 import { format } from "date-fns";
+
 type StoryblokPageResult = ISbStory & {
   data: ISbStory["data"] & {
     story: ISbStory["data"]["story"] & {
-      content: Required<PageStoryblok>;
+      content: Required<LandingPageStoryblok>;
     };
   };
 };
