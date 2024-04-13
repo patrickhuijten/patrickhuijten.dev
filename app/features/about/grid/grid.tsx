@@ -27,7 +27,7 @@ export const Grid = async () => {
           <div dangerouslySetInnerHTML={{ __html: headline ?? "" }} />
           <div>
             {socials?.map((social) => (
-              <Social iconType={social.platform} src={social.url?.url} />
+              <Social key={social._uid} iconType={social.platform} src={social.url?.url} />
             ))}
           </div>
         </Card>

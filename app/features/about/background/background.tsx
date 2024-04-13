@@ -13,7 +13,7 @@ interface Particle {
   z: number;
 }
 
-const getColor = () =>
+const useColor = () =>
   useMemo(() => {
     const accentColor = getComputedStyle(
       document.documentElement
@@ -86,7 +86,7 @@ const Swarm = () => {
   return (
     <instancedMesh ref={mesh} args={[undefined, undefined, count]}>
       <sphereGeometry args={[1, 6]} />
-      <meshStandardMaterial color={getColor()} />
+      <meshStandardMaterial color={useColor()} />
     </instancedMesh>
   );
 };
