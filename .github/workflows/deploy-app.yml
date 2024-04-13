@@ -21,6 +21,7 @@ jobs:
             rm .env
             echo STORYBLOK_TOKEN=${{secrets.STORYBLOK_TOKEN}} >> .env
             echo HOSTNAME=${{secrets.HOSTNAME}} >> .env
+            echo STORYBLOK_ACCESS_TOKEN=${{secrets.STORYBLOK_ACCESS_TOKEN}} >> .env
             yarn
             rm -rf .next
             yarn storyblok login --region eu --token ${{secrets.STORYBLOK_ACCESS_TOKEN}}
