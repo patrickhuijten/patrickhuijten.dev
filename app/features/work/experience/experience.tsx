@@ -1,5 +1,5 @@
 import { ExperienceStoryblok } from "@/types/storyblok";
-import styles from "features/work/experience/experience.module.css";
+import styles from "./experience.module.css";
 import Image from "next/image";
 
 type ExperienceProps = {

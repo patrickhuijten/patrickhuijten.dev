@@ -1,6 +1,6 @@
 import { getStory } from "@/lib/storyblok-api";
 import { Card } from "features/about/card/card";
-import styles from "features/about/grid/grid.module.css";
+import styles from "./grid.module.css";
 import { Social } from "features/about/social/social";
 import Image from "next/image";
 

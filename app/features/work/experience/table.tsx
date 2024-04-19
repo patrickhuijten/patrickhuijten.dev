@@ -3,7 +3,7 @@
 import { ExperienceStoryblok } from "@/types/storyblok";
 import { ExperienceItem } from "features/work/experience/experience";
 import { ExperienceIndex } from "features/work/experience/experience-index";
-import styles from "features/work/experience/table.module.css";
+import styles from "./table.module.css";
 import { useState } from "react";
 
 type TableProps = {
