@@ -4,7 +4,7 @@ import {
   faGithub,
 } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import styles from "features/about/social/social.module.css";
+import styles from "./social.module.css";
 import { type IconProp } from "@fortawesome/fontawesome-svg-core";
 import { SocialStoryblok } from "@/types/storyblok";
 
