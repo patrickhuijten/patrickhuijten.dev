@@ -23,6 +23,7 @@ div.media {
   grid-template-columns: repeat(3, 1fr);
   gap: var(--gap);
   padding-top: var(---gap);
+  overflow: auto;
 
   @media (max-aspect-ratio: 1/1) {
     gap: 0.5rem;
