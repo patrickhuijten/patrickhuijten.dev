@@ -33,6 +33,10 @@ div.media {
   }
 }
 
+div.media:not(:empty) {
+  grid-template-rows: 200px;
+}
+
 span.title {
   grid-column: span 2;
 }
