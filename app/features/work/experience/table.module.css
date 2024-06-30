@@ -9,7 +9,7 @@ div.table {
 
   @media (max-aspect-ratio: 1/1) {
     height: unset;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: max-content max-content;
     grid-auto-flow: column;
   }
@@ -23,6 +23,7 @@ ul.container {
     margin: 0;
     display: grid;
     grid-auto-flow: column;
+    grid-auto-columns: max-content;
     gap: var(--gap);
     overflow: auto hidden;
   }
