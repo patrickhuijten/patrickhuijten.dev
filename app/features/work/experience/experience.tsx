@@ -63,8 +63,8 @@ const Title = ({
   return (
     <span className={styles.title}>
       <h2>
-        {title} @{" "}
-        <a href={company?.url} target="_blank">
+        <span className={styles.role}>{title}</span>
+        <a className={styles.company} href={company?.url} target="_blank">
           {company_name}
         </a>
       </h2>
